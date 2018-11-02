@@ -18,7 +18,8 @@ public class PokreniTestove {
 
 	public static void main(String[] args) {
 		runTestsForClass(eksponati.EksponatTest.class);
-		//runTestsForClass(restoran.RestoranTest.class);
+		runTestsForClass(eksponati.slike.SlikaTest.class);
+		runTestsForClass(eksponati.skulpture.SkulpturaTest.class);
 		//runTestsForClass(restoran.vodic.VodicKrozRestoraneTest.class);
 		runTestsForClass(ispravka_koda.Ispisivac2Test.class);
 	}
