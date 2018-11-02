@@ -20,7 +20,7 @@ public class PokreniTestove {
 		runTestsForClass(eksponati.EksponatTest.class);
 		runTestsForClass(eksponati.slike.SlikaTest.class);
 		runTestsForClass(eksponati.skulpture.SkulpturaTest.class);
-		//runTestsForClass(restoran.vodic.VodicKrozRestoraneTest.class);
+		runTestsForClass(galerija.GalerijaTest.class);
 		runTestsForClass(ispravka_koda.Ispisivac2Test.class);
 	}
 

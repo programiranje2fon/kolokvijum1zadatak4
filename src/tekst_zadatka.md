@@ -36,7 +36,7 @@ Napraviti javnu klasu **Galerija** u paketu **galerija** koja ima:
 
 * Javni konstruktor koji inicijalizuje niz na 100 elemenata.
 
-* Javnu metodu **unesiEksponat** koja kao parametar prima objekat klase Eksponat i unosi ga u niz na prvo slobodno mesto. Mesto u nizu je slobodno ako je element na tom mestu NULL. Unošenje se vrši samo ako uneti objekat nema null vrednost, ako u nizu ima mesta i ako se u nizu već ne nalazi isti eksponat. U suprotnom, ispisati poruku o grešci. Ako se izvrši uspešan unos, postaviti da datum prijema ovog novog eksponata bude trenutni datum.
+* Javnu metodu **unesiEksponat** koja kao parametar prima objekat klase Eksponat i unosi ga u niz na prvo slobodno mesto. Mesto u nizu je slobodno ako je element na tom mestu NULL. Unošenje se vrši samo ako uneti objekat nema null vrednost, ako u nizu ima mesta i ako se u nizu već ne nalazi isti eksponat. U suprotnom, ispisati poruku o grešci.
 
 * Javnu metodu **uvediPopust** koja kao ulazni parametar dobija procentualni iznos popusta (npr.7,5%) i spušta cene svih onih eksponata koji su primljeni u galeriju u toku prethodne godine. Pri tome, potrebno je utvrditi koja je bila prethodna godina na osnovu trenutnog datuma.
 

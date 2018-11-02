@@ -30,7 +30,6 @@ public class Galerija {
 		for (int i=0; i<eksponati.length; i++)
 			if (eksponati[i] == null) {
 				eksponati[i] = e;
-				e.setDatumPrijema(new GregorianCalendar());
 				return;
 			}
 
@@ -40,12 +39,13 @@ public class Galerija {
 	public void uvediPopust(double procenatPopusta) {
 		GregorianCalendar trenutni = new GregorianCalendar();
 		
-		int godina = trenutni.get(GregorianCalendar.YEAR);
+		int proslaGodina = trenutni.get(GregorianCalendar.YEAR) -1;
 		
 		for (int i=0;i<eksponati.length;i++)
 			if (eksponati[i]!=null && 
-				eksponati[i].getDatumPrijema().get(GregorianCalendar.YEAR) == godina-1) {
+				eksponati[i].getDatumPrijema().get(GregorianCalendar.YEAR) == proslaGodina) {
 				double novaCena = eksponati[i].getCena() * (100-procenatPopusta)/100;
+				
 				eksponati[i].setCena(novaCena);
 			}
 	}
