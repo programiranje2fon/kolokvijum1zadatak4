@@ -14,12 +14,13 @@ Napraviti javnu klasu **Eksponat** u paketu **eksponati** koja ima:
 
 * Odgovarajuće javne get i set metode za ove atribute. Nedozvoljene vrednosti za atribute naziv i autor su null i prazan String a cena mora da bude veća od nule. Takođe, datum prijema ne sme da bude null i mora da se odnosi na neki trenutak pre trenutnog datuma i vremena. U slučaju unosa nedozvoljenih vrednosti potrebno je ispisati na ekranu reč "GRESKA".
 
-* Javnu metodu **ispisi** koja na ekranu ispisuje sve podatke o eksponatu.
+* Redefinisanu metodu **toString** koja vraća String sa svim podacima o eksponatu.
+
+* Redefinisanu **equals** metodu koja proverava da li je unet objeka klase Eksponat i vraća false ako nije. Metoda vraća true ako jeste unet objeka klase Eksponat i ako se vrednosti atributa naziv i autor podudaraju sa nazivom i autorom unetog objekta. 
 
 Napraviti javnu klasu **Slika** u paketu **eksponati.slike** koja nasleđuje klasu Eksponat i ima:
 
-* Redefinisanunu javnu metodu **ispisi** koja na ekranu ispisuje sve podatke o slici uz odgovarajući tekst
-i napomenu da je eksponat, u ovom slučaju, slika.
+* Redefinisanu javnu metodu **toString** koja vraća String sa SVIM podacima o slici, a taj String sadrži i napomenu da je eksponat, u ovom slučaju, slika.
 
 Napraviti javnu klasu **Skulptura** u paketu **eksponati.skulpture** koja nasleđuje klasu Eksponat i ima:
 
@@ -27,7 +28,7 @@ Napraviti javnu klasu **Skulptura** u paketu **eksponati.skulpture** koja nasle�
 
 * Odgovarajuće javne get i set metode za ovaj atribut
 
-* Redefinisanu javnu metodu **ispisi** koja na ekranu ispisuje sve podatke o skulpturi uz odgovarajući tekst i napomenu da je eksponat, u ovom slučaju, skulptura.
+* Redefinisanu javnu metodu **toString** koja vraća String sa SVIM podacima o skulpturi, a taj String sadrži i napomenu da je eksponat, u ovom slučaju, skulptura.
 
 Napraviti javnu klasu **Galerija** u paketu **galerija** koja ima:
 
@@ -35,7 +36,7 @@ Napraviti javnu klasu **Galerija** u paketu **galerija** koja ima:
 
 * Javni konstruktor koji inicijalizuje niz na 100 elemenata.
 
-* Javnu metodu **unesiEksponat** koja kao parametar prima objekat klase Eksponat i unosi ga u niz na prvo slobodno mesto. Mesto u nizu je slobodno ako je element na tom mestu NULL. Unošenje se vrši samo ako uneti objekat nema null vrednost i ako u nizu ima mesta. U suprotnom, ispisati poruku o grešci. Ako se izvrši uspešan unos, postaviti da datum prijema ovog novog eksponata bude trenutni datum.
+* Javnu metodu **unesiEksponat** koja kao parametar prima objekat klase Eksponat i unosi ga u niz na prvo slobodno mesto. Mesto u nizu je slobodno ako je element na tom mestu NULL. Unošenje se vrši samo ako uneti objekat nema null vrednost, ako u nizu ima mesta i ako se u nizu već ne nalazi isti eksponat. U suprotnom, ispisati poruku o grešci. Ako se izvrši uspešan unos, postaviti da datum prijema ovog novog eksponata bude trenutni datum.
 
 * Javnu metodu **uvediPopust** koja kao ulazni parametar dobija procentualni iznos popusta (npr.7,5%) i spušta cene svih onih eksponata koji su primljeni u galeriju u toku prethodne godine. Pri tome, potrebno je utvrditi koja je bila prethodna godina na osnovu trenutnog datuma.
 
