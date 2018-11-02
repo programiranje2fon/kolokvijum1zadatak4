@@ -4,9 +4,9 @@ import eksponati.Eksponat;
 
 public class Slika extends Eksponat {
 	
-	public void ispisi() {
-		super.ispisi();
-		System.out.println("U pitanju je slika");
+	@Override
+	public String toString() {
+		return super.toString() + " NAPOMENA: u pitanju je slika";
 	}
 
 }

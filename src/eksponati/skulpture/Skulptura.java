@@ -13,11 +13,12 @@ public class Skulptura extends Eksponat {
 	public void setMaterijal(String materijal) {
 		this.materijal = materijal;
 	}
-	
-	public void ispisi() {
-		super.ispisi();
-		System.out.println("Materijal: " + materijal);
-		System.out.println("U pitanju je skulptura");
+
+	@Override
+	public String toString() {
+		return super.toString() + " materijal=" + materijal + " NAPOMENA: u pitanju je skulptura";
 	}
+	
+	
 
 }

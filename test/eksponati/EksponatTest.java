@@ -140,18 +140,66 @@ public class EksponatTest {
 	}
 	
 	@Test
-	public void metoda_ispisi() {
+	public void metoda_equals() {
+		instance.setAutor("Pera");
+		instance.setNaziv("Eksponat");
+		instance.setCena(33.4);
+		instance.setDatumPrijema(new GregorianCalendar(2000,3,4));
+		
+		Eksponat e2 = new Eksponat();
+		e2.setAutor("Pera");
+		e2.setNaziv("Eksponat");
+		e2.setCena(22.2);
+		e2.setDatumPrijema(new GregorianCalendar(2011,2,1));
+		
+		assertEquals("Ako je unet autor Pera i naziv eksponata Eksponat za oba objekta, metoda vraca false", true, instance.equals(e2));
+	}
+	
+	@Test
+	public void metoda_equals_FalseAutor() {
+		instance.setAutor("Pera");
+		instance.setNaziv("Eksponat");
+		instance.setCena(33.4);
+		instance.setDatumPrijema(new GregorianCalendar(2000,3,4));
+		
+		Eksponat e2 = new Eksponat();
+		e2.setAutor("Pera2");
+		e2.setNaziv("Eksponat");
+		e2.setCena(22.2);
+		e2.setDatumPrijema(new GregorianCalendar(2011,2,1));
+		
+		assertEquals("Ako je nije isti autor za oba objekta, metoda ipak vraca true", false, instance.equals(e2));
+	}
+	
+	@Test
+	public void metoda_equals_FalseNaziv() {
+		instance.setAutor("Pera");
+		instance.setNaziv("Eksponat");
+		instance.setCena(33.4);
+		instance.setDatumPrijema(new GregorianCalendar(2000,3,4));
+		
+		Eksponat e2 = new Eksponat();
+		e2.setAutor("Pera");
+		e2.setNaziv("Eksponat2");
+		e2.setCena(22.2);
+		e2.setDatumPrijema(new GregorianCalendar(2011,2,1));
+		
+		assertEquals("Ako je nije isti naziv za oba objekta, metoda ipak vraca true", false, instance.equals(e2));
+	}
+	
+	@Test
+	public void metoda_toString() {
 		instance.setNaziv("Slika1");
 		instance.setAutor("Autor2");
 		instance.setCena(25.5);
 		instance.setDatumPrijema(new GregorianCalendar(2011,10,2));
 		
-		instance.ispisi();
+		String s = instance.toString();
 		
-		assertTrue("NE ispisuje se naziv eksponata", outContent.toString().contains("Slika1"));		
-		assertTrue("NE ispisuje se autor", outContent.toString().contains("Autor2"));		
-		assertTrue("NE ispisuje se cena eksponata", outContent.toString().contains("25.5"));
-		assertTrue("NE ispisuje se datum prijema", outContent.toString().contains("2011"));		
+		assertTrue("NE vraca se naziv eksponata", s.contains("Slika1"));		
+		assertTrue("NE vraca se autor", s.contains("Autor2"));		
+		assertTrue("NE vraca se cena eksponata", s.contains("25.5"));
+		assertTrue("NE vraca se datum prijema", s.contains("2011"));		
 	}
 	
 }

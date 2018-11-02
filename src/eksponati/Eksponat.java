@@ -56,12 +56,24 @@ public class Eksponat {
 			this.datumPrijema = datumPrijema;
 	}
 	
-	public void ispisi() {
-		System.out.println("Naziv: " + naziv);
-		System.out.println("Autor: " + autor);
-		System.out.println("Cena: " + cena);
-		System.out.println("Datum prijema: " + datumPrijema.getTime());
+	public boolean equals(Object o) {
+		if (o == null || !(o instanceof Eksponat))
+			return false;
+		
+		Eksponat eksponat2 = (Eksponat)(o);
+		
+		if (naziv.equals(eksponat2.naziv) && autor.equals(eksponat2.autor))
+			return true;
+		else
+			return false;
 	}
+
+	@Override
+	public String toString() {
+		return "Naziv=" + naziv + ", autor=" + autor + ", cena=" + cena + ", datumPrijema=" + datumPrijema.getTime();
+	}
+	
+	
 	
 
 }

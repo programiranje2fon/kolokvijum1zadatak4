@@ -4,11 +4,14 @@ import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Modifier;
 import java.util.GregorianCalendar;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import test.TestUtil;
 
 public class SkulpturaTest {
 
@@ -34,6 +37,16 @@ public class SkulpturaTest {
 	}
 	
 	@Test
+	public void atribut_materijal() {
+		assertTrue("U klasi nije definisan atribut materijal", TestUtil.doesFieldExist(Skulptura.class, "materijal"));
+	}
+	
+	@Test
+	public void atribut_autor_vidljivost() {
+		assertTrue("Atribut materijal nije privatan", TestUtil.hasFieldModifier(Skulptura.class, "materijal", Modifier.PRIVATE));
+	}
+
+	@Test
 	public void metoda_setMaterijal() {
 		instance.setMaterijal("srebro");
 		
@@ -41,21 +54,21 @@ public class SkulpturaTest {
 	}
 
 	@Test
-	public void metoda_ispisi() {
+	public void metoda_toString() {
 		instance.setNaziv("Slika1");
 		instance.setAutor("Autor2");
 		instance.setCena(25.5);
 		instance.setMaterijal("bronza");
 		instance.setDatumPrijema(new GregorianCalendar(2011,10,2));
 		
-		instance.ispisi();
+		String s = instance.toString();
 		
-		assertTrue("NE ispisuje se naziv", outContent.toString().contains("Slika1"));		
-		assertTrue("NE ispisuje se autor", outContent.toString().contains("Autor2"));		
-		assertTrue("NE ispisuje se cena", outContent.toString().contains("25.5"));
-		assertTrue("NE ispisuje se materijal", outContent.toString().contains("bronza"));
-		assertTrue("NE ispisuje se datum prijema", outContent.toString().contains("2011"));	
-		assertTrue("NE ispisuje se napomena da je u pitanju skulptura", outContent.toString().contains("kulptur"));
+		assertTrue("NE vraca se naziv", s.contains("Slika1"));		
+		assertTrue("NE vraca se autor", s.contains("Autor2"));		
+		assertTrue("NE vraca se cena", s.contains("25.5"));
+		assertTrue("NE vraca se materijal", s.contains("bronza"));
+		assertTrue("NE vraca se datum prijema", s.contains("2011"));	
+		assertTrue("NE vraca se napomena da je u pitanju skulptura", s.contains("kulptur"));
 	}
 
 }

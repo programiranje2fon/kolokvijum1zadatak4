@@ -34,19 +34,19 @@ public class SlikaTest {
 	}
 
 	@Test
-	public void metoda_ispisi() {
+	public void metoda_toString() {
 		instance.setNaziv("Slika1");
 		instance.setAutor("Autor2");
 		instance.setCena(25.5);
 		instance.setDatumPrijema(new GregorianCalendar(2011,10,2));
 		
-		instance.ispisi();
+		String s = instance.toString();
 		
-		assertTrue("NE ispisuje se naziv", outContent.toString().contains("Slika1"));		
-		assertTrue("NE ispisuje se autor", outContent.toString().contains("Autor2"));		
-		assertTrue("NE ispisuje se cena", outContent.toString().contains("25.5"));
-		assertTrue("NE ispisuje se datum prijema", outContent.toString().contains("2011"));	
-		assertTrue("NE ispisuje se napomena da je u pitanju slika", outContent.toString().contains("lika"));
+		assertTrue("NE vraca se naziv", s.contains("Slika1"));		
+		assertTrue("NE vraca se autor", s.contains("Autor2"));		
+		assertTrue("NE vraca se cena", s.contains("25.5"));
+		assertTrue("NE vraca se datum prijema", s.contains("2011"));	
+		assertTrue("NE vraca se napomena da je u pitanju slika", s.contains("lika"));
 	}
 
 	
