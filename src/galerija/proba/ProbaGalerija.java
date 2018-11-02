@@ -1,8 +1,9 @@
-package galerija;
+package galerija.proba;
 
 import java.util.GregorianCalendar;
 
 import eksponati.skulpture.Skulptura;
+import galerija.Galerija;
 
 public class ProbaGalerija {
 
