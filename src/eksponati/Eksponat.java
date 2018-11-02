@@ -70,7 +70,7 @@ public class Eksponat {
 
 	@Override
 	public String toString() {
-		return "Naziv=" + naziv + ", autor=" + autor + ", cena=" + cena + ", datumPrijema=" + datumPrijema.getTime();
+		return "Naziv=" + naziv + ", autor=" + autor + ", cena=" + cena + ", datumPrijema=" + datumPrijema;
 	}
 	
 	

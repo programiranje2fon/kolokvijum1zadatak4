@@ -174,8 +174,48 @@ public class GalerijaTest {
 	}
 
 	@Test (timeout = 2000)
-	public void testVratiNajskuplje() {
-		fail("Not yet implemented");
+	public void metoda_vratiNajskuplje() {
+		Slika s = new Slika();
+		s.setNaziv("Slika");
+		s.setAutor("Pera");
+		s.setCena(100.0);
+		
+		Skulptura sk = new Skulptura();
+		sk.setNaziv("Skulptura");
+		sk.setMaterijal("bronza");
+		sk.setAutor("Mika");
+		sk.setCena(200.0);
+		
+		Skulptura sk2 = new Skulptura();
+		sk2.setNaziv("Skulptura2");
+		sk2.setMaterijal("bronza");
+		sk2.setAutor("Mika");
+		sk2.setCena(300.0);
+		
+		Skulptura sk3 = new Skulptura();
+		sk3.setNaziv("Skulptura3");
+		sk3.setMaterijal("bronza");
+		sk3.setAutor("Zika");
+		sk3.setCena(100.0);
+
+		Skulptura sk4 = new Skulptura();
+		sk4.setNaziv("Skulptura4");
+		sk4.setMaterijal("drvo");
+		sk4.setAutor("Laza");
+		sk4.setCena(500.0);
+
+		instance.unesiEksponat(s);
+		instance.unesiEksponat(sk);
+		instance.unesiEksponat(sk2);
+		instance.unesiEksponat(sk3);
+		instance.unesiEksponat(sk4);
+		
+		Skulptura[] niz = instance.vratiNajskuplje();
+		
+		assertEquals("Niz nije duzine 2", 2, niz.length);
+		assertTrue("Uneto je 5 eksponata:"+s+sk+sk2+sk3+sk4+" ali se najskuplja skulptura cene 300 ne nalazi u rezultatu", sk.equals(niz[0]) || sk.equals(niz[1]));
+		assertTrue("Uneto je 5 eksponata:"+s+sk+sk2+sk3+sk4+" ali se druga najskuplja skulptura cene 200 ne nalazi u rezultatu", sk2.equals(niz[0]) || sk2.equals(niz[1]));
+
 	}
 
 }
