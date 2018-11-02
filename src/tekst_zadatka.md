@@ -12,7 +12,7 @@ Napraviti javnu klasu **Eksponat** u paketu **eksponati** koja ima:
 
 * Privatni atribut **datumPrijema** tj. datum kada je eksponat primljen u galeriju (klasa GregorianCalendar).
 
-* Odgovarajuće javne get i set metode za ove atribute. Nedozvoljene vrednosti za atribute naziv i autor su null i prazan String a cena mora da bude veća od nule. Takođe, datum prijema ne sme da bude null i mora da se odnosi na neki trenutak pre trenutnog datuma i vremena. U slučaju unosa nedozvoljenih vrednosti potrebno je ispisati na ekranu reč "GRESKA".
+* Odgovarajuće javne get i set metode za ove atribute. Nedozvoljene vrednosti za atribute naziv i autor su null i prazan String a cena mora da bude veća od nule. Takođe, datum prijema ne sme da bude null i mora da se odnosi na neki trenutak koji nije posle trenutnog datuma i vremena. U slučaju unosa nedozvoljenih vrednosti potrebno je ispisati na ekranu reč "GRESKA".
 
 * Redefinisanu metodu **toString** koja vraća String sa svim podacima o eksponatu.
 
@@ -36,11 +36,11 @@ Napraviti javnu klasu **Galerija** u paketu **galerija** koja ima:
 
 * Javni konstruktor koji inicijalizuje niz na 100 elemenata.
 
-* Javnu metodu **unesiEksponat** koja kao parametar prima objekat klase Eksponat i unosi ga u niz na prvo slobodno mesto. Mesto u nizu je slobodno ako je element na tom mestu NULL. Unošenje se vrši samo ako uneti objekat nema null vrednost, ako u nizu ima mesta i ako se u nizu već ne nalazi isti eksponat. U suprotnom, ispisati poruku o grešci. Ako se izvrši uspešan unos, postaviti da datum prijema ovog novog eksponata bude trenutni datum.
+* Javnu metodu **unesiEksponat** koja kao parametar prima objekat klase Eksponat i unosi ga u niz na prvo slobodno mesto. Mesto u nizu je slobodno ako je element na tom mestu NULL. Unošenje se vrši samo ako uneti objekat nema null vrednost, ako u nizu ima mesta i ako se u nizu već ne nalazi isti eksponat. U suprotnom, ispisati poruku o grešci.
 
 * Javnu metodu **uvediPopust** koja kao ulazni parametar dobija procentualni iznos popusta (npr.7,5%) i spušta cene svih onih eksponata koji su primljeni u galeriju u toku prethodne godine. Pri tome, potrebno je utvrditi koja je bila prethodna godina na osnovu trenutnog datuma.
 
-* Javnu metodu koja vraća niz objekata klase Skulptura koji sadrži dve najskuplje skulpture (iz galerije) napravljene od bronze.
+* Javnu metodu **vratiNajskuplje** koja vraća niz objekata klase Skulptura koji sadrži tačno dve najskuplje skulpture (iz galerije) napravljene od bronze.
 
 Napraviti javnu klasu **ProbaGalerija** u paketu **galerija.proba** koja u okviru main metode pravi jedan objekat klase Galerija, i unosi jedan eksponat: skulpturu od bronze "Bista majke" autora "Petra Markovica" koja je primljena 12.07.2017. u galeriju.
 
