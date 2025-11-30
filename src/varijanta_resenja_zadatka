@@ -1,0 +1,244 @@
+package eksponati;
+
+import java.util.GregorianCalendar;
+
+public class Eksponat {
+	
+	private String naziv;
+	
+	private String autor;
+	
+	private double cena;
+	
+	private GregorianCalendar datumPrijema;
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		if (naziv == null || naziv.isEmpty())
+			System.out.println("GRESKA");
+		else
+			this.naziv = naziv;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		if (autor == null || autor.isEmpty())
+			System.out.println("GRESKA");
+		else
+			this.autor = autor;
+	}
+
+	public double getCena() {
+		return cena;
+	}
+
+	public void setCena(double cena) {
+		if (cena <= 0)
+			System.out.println("GRESKA");
+		else
+			this.cena = cena;
+	}
+
+	public GregorianCalendar getDatumPrijema() {
+		return datumPrijema;
+	}
+
+	public void setDatumPrijema(GregorianCalendar datumPrijema) {
+		if (datumPrijema == null || datumPrijema.after(new GregorianCalendar()))
+			System.out.println("GRESKA");
+		else
+			this.datumPrijema = datumPrijema;
+	}
+	
+	public boolean equals(Object o) {
+		if (o == null || !(o instanceof Eksponat))
+			return false;
+		
+		Eksponat eksponat2 = (Eksponat)(o);
+		
+		if (naziv.equals(eksponat2.naziv) && autor.equals(eksponat2.autor))
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public String toString() {
+		return "Naziv=" + naziv + ", autor=" + autor + ", cena=" + cena + ", datumPrijema=" + datumPrijema;
+	}	
+
+}
+
+package eksponati.slike;
+
+import eksponati.Eksponat;
+
+public class Slika extends Eksponat {
+	
+	@Override
+	public String toString() {
+		return super.toString() + " NAPOMENA: u pitanju je slika";
+	}
+
+}
+
+package eksponati.skulpture;
+
+import eksponati.Eksponat;
+
+public class Skulptura extends Eksponat {
+	
+	private String materijal;
+
+	public String getMaterijal() {
+		return materijal;
+	}
+
+	public void setMaterijal(String materijal) {
+		this.materijal = materijal;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " materijal=" + materijal + " NAPOMENA: u pitanju je skulptura";
+	}
+	
+}
+
+package galerija;
+
+import java.util.GregorianCalendar;
+
+import eksponati.Eksponat;
+import eksponati.skulpture.Skulptura;
+
+public class Galerija {
+	
+	private Eksponat[] eksponati;
+	
+	public Galerija() {
+		eksponati = new Eksponat[100];
+	}
+	
+	private boolean daLiJeUNizu(Eksponat e) {
+		for (int i=0; i<eksponati.length; i++)
+			if (eksponati[i] != null && eksponati[i].equals(e))
+				return true;
+		
+		return false;
+	}
+	
+	public void unesiEksponat (Eksponat e) {
+		if (e == null || daLiJeUNizu(e) == true) {
+			System.out.println("GRESKA");
+			return;
+		}
+		
+		for (int i=0; i<eksponati.length; i++)
+			if (eksponati[i] == null) {
+				eksponati[i] = e;
+				return;
+			}
+
+		System.out.println("GRESKA");
+	}
+	
+	public void uvediPopust(double procenatPopusta) {
+		GregorianCalendar trenutni = new GregorianCalendar();
+		
+		int proslaGodina = trenutni.get(GregorianCalendar.YEAR) -1;
+		
+		for (int i=0;i<eksponati.length;i++)
+			if (eksponati[i]!=null && 
+				eksponati[i].getDatumPrijema().get(GregorianCalendar.YEAR) == proslaGodina) {
+				double novaCena = eksponati[i].getCena() * (100-procenatPopusta)/100;
+				
+				eksponati[i].setCena(novaCena);
+			}
+	}
+	
+	public Skulptura[] vratiNajskuplje() {
+		Skulptura[] niz = new Skulptura[2];
+		
+		int max1Indeks = -1;
+
+		for (int i=0; i<eksponati.length; i++)
+			if (eksponati[i]!=null && eksponati[i] instanceof Skulptura &&
+					((Skulptura)(eksponati[i])).getMaterijal().equals("bronza"))
+				if (max1Indeks == -1 || eksponati[max1Indeks].getCena() < eksponati[i].getCena())
+					max1Indeks = i;
+		
+		int max2Indeks = -1;
+		
+		for (int i=0; i<eksponati.length; i++)
+			if (i!=max1Indeks && 
+					eksponati[i]!=null && eksponati[i] instanceof Skulptura &&
+					((Skulptura)(eksponati[i])).getMaterijal().equals("bronza"))
+				if (max2Indeks == -1 || eksponati[max2Indeks].getCena() < eksponati[i].getCena())
+					max2Indeks = i;
+		
+		if (max1Indeks != -1) niz[0] = (Skulptura)eksponati[max1Indeks];
+		if (max2Indeks != -1) niz[1] = (Skulptura)eksponati[max2Indeks];
+		
+		return niz;
+	}
+
+}
+
+package galerija.proba;
+
+import java.util.GregorianCalendar;
+
+import eksponati.skulpture.Skulptura;
+import galerija.Galerija;
+
+public class ProbaGalerija {
+
+	public static void main(String[] args) {
+		Galerija g = new Galerija();
+		
+		Skulptura s = new Skulptura();
+		
+		s.setAutor("Petar Markovic");
+		s.setNaziv("Bista majke");
+		s.setMaterijal("bronza");
+		s.setDatumPrijema(new GregorianCalendar(2017, 6, 12));
+		
+		g.unesiEksponat(s);
+	}
+
+}
+
+package ispravka_koda;
+
+class Ispisivac2 {
+	
+	static void ispisiTrougao() {
+		int i = 5;
+		while (i >= 1) {
+			for (int j = 1; j <= i; j++)
+			System.out.print('*');
+			System.out.println();
+			i--;
+		}
+	}
+	
+}
+
+package ispravka_koda;
+
+public class ProbaIspisivac2 {
+
+	public static void main(String[] args) {
+		Ispisivac2.ispisiTrougao();
+	}
+
+}
+
+
